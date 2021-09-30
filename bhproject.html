@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Barret Vogtman -->
+<!-- Project 1 - Problems 1&2 -->
+<!-- Computer Graphics -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Block Head Project</title>
+
+  <!-- Vertex Shader -->
+  <script id="vertex-shader" type="x-shader/x-vertex">
+
+    #version 300 es
+
+    in vec2 vPosition;
+    uniform mat4 P;
+    uniform mat4 MV;
+
+    void
+    main()
+    {
+       gl_Position = P * MV * vec4(vPosition, 0, 1);
+    }
+
+  </script>
+
+  <!-- Fragment Shader -->
+  <script id="fragment-shader" type="x-shader/x-fragment">
+
+    #version 300 es
+    precision mediump float;
+
+    uniform vec4 color; // Declare a uniform variable in fragment shader
+    out vec4 fColor;
+
+    void
+    main()
+    {
+        fColor = vec4(color);
+    }
+
+  </script>
+
+  <!-- CSS files -->
+  <!--<link rel="stylesheet" href="css/normalize.css">-->
+  <link rel="stylesheet" href="bhproject.css">
+
+
+  <script type="text/javascript" src="../Common/initShaders.js"></script>
+  <script type="text/javascript" src="../Common/MVnew.js"></script>
+  <script type="text/javascript" src="../Common/Vbo.js"></script>
+
+</head>
+<body>
+<div class="flex-container2">
+  <div class="sliders">
+    <div class="slider-cont">
+      <label for="Red" class="red">Red&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+      0 <input class="slider-red" id="Red" type="range" min="0" max="255" step="1" value="128" /> 1
+    </div>
+    <div class="slider-cont">
+      <label for="Green" class="green">Green&nbsp&nbsp</label>
+      0 <input class="slider-green" id="Green" type="range" min="0" max="255" step="1" value="128" /> 1
+    </div>
+    <div class="slider-cont">
+      <label for="Blue" class="blue">Blue&nbsp&nbsp&nbsp&nbsp</label>
+      0 <input class="slider-blue" id="Blue" type="range" min="0" max="255" step="1" value="128" /> 1
+    </div>
+  </div>
+</div>
+<div class="flex-container">
+  <canvas id="gl-canvas" width="1280" height="720">  <!---- Set canvas to be 720P -->
+    Oops ... your browser doesn't support the HTML5 canvas element
+  </canvas>
+  <div class="buttons_top">
+    <button id="pan_up" class="button">Pan Up</button>
+  </div>
+  <div class="buttons_center">
+    <button id="pan_left" class="button">Pan Left</button>
+    <button id="pan_right" class="button">Pan Right</button>
+  </div>
+  <div class="buttons_bottom">
+    <button id="pan_down" class="button">Pan Down</button>
+  </div>
+  <div class="buttons_zoom">
+    <button id="zoom_in" class="button">Zoom In</button>
+    <button id="reset" class="button" type="reset">Reset</button>
+    <button id="zoom_out" class="button">Zoom Out</button>
+  </div>
+  <fieldset>
+    <legend>Rotation Control</legend>
+  <div class="buttons_zoom">
+    <button id="left_eye" class="button">Left Eye</button>
+    <button id="right_eye" class="button">Right Eye</button>
+    <button id="nose" class="button">Nose</button>
+  </div>
+  <div class="button_stop">
+    <button id="stop" class="button">Stop</button>
+  </div>
+  </fieldset>
+</div>
+</body>
+  <script type="text/javascript" src="bhproject.js"></script>
+</html>

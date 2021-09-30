@@ -1,0 +1,147 @@
+/**
+* Barret Vogtman
+* Project 1 - Problems 1&2
+* Computer Graphics
+ */
+
+html {
+  color: #222;
+  font-size: 1.5em;
+  line-height: 1.4;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.buttons_top {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  padding: 8px;
+}
+
+.buttons_bottom {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  padding: 8px;
+}
+
+.buttons_center {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-around;
+  padding: 8px;
+}
+
+.buttons_zoom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-around;
+  padding: 8px;
+}
+
+.button_stop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
+  padding: 8px;
+}
+
+.button {
+  transition-duration: 0.5s;
+  width: 80px;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: red;
+  color: white;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.slider-cont {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-red {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 10px;
+  border-radius: 5px;
+  background: red;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider-green {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 10px;
+  border-radius: 5px;
+  background: green;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider-blue {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 10px;
+  border-radius: 5px;
+  background: blue;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider-red.hover {
+  opacity: 1;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+}

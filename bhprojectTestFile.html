@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Barret Vogtman -->
+<!-- Project 1 - Problems 3 -->
+<!-- Computer Graphics -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Block Head Project</title>
+
+  <!-- Vertex Shader -->
+  <script id="vertex-shader" type="x-shader/x-vertex">
+
+      #version 300 es
+
+      in vec2 vPosition;
+      uniform mat4 P;
+      uniform mat4 MV;
+
+      void
+      main()
+      {
+         gl_Position = P * MV * vec4(vPosition, 0, 1);
+      }
+
+    </script>
+
+  <!-- Fragment Shader -->
+  <script id="fragment-shader" type="x-shader/x-fragment">
+
+      #version 300 es
+      precision mediump float;
+
+      uniform vec4 color; // Declare a uniform variable in fragment shader
+      out vec4 fColor;
+
+      void
+      main()
+      {
+          fColor = vec4(color);
+      }
+
+    </script>
+
+  <!-- CSS files -->
+  <!--<link rel="stylesheet" href="css/normalize.css">-->
+  <!--<link rel="stylesheet" href="bhproject2.css">-->
+
+  <script type="text/javascript" src="../Common/initShaders.js"></script>
+  <script type="text/javascript" src="../Common/MVnew.js"></script>
+  <script type="text/javascript" src="../Common/Vbo.js"></script>
+</head>
+<body>
+<div class="flex-container">
+  <canvas id="gl-canvas" width="1280" height="720">  <!-- Set canvas to be 720P -->
+    Oops ... your browser doesn't support the HTML5 canvas element
+  </canvas>
+</div>
+</body>
+<script type="text/javascript" src="bhprojectTest.js"></script>
+</html>
