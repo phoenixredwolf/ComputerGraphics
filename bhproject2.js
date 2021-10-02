@@ -81,14 +81,14 @@ function DrawFerrisWheel(degs, pivot)
   var TI = translate(pivot[0], pivot[1], pivot[2]);
   var R = mult(R1, TI);
 
-  scaleMat = scale(1.0, 1.0, 0.0);               // Scale unit square in x-direction by 5.0 to form a 5x1 rectangle
-  translateMat = translate(0.0, 0.0, 0.0);       // Translate the 5x1 rectangle down -2.0 in the y direction
+  scaleMat = scale(1.0, 1.0, 0.0);               // Set Scale
+  translateMat = translate(0.0, 0.0, 0.0);       // Set centerpoint
   modelView = mult(translateMat, scaleMat);      // Compose the scale and the translate via matrix multiply storing the result in the modelView matrix
   modelView = mult(R, modelView);
 
   gl.uniformMatrix4fv(MV_loc, false, flatten(modelView));      // push values of modelView matrix down to the vertex shader uniform variable MV
   gl.uniform4f(colorLoc, 1.0, 1.0, 0.0, 1.0);               // Set RGB of frangment shader uniform variable "color" to yellow
-  gl.drawArrays(gl.LINE_LOOP, 0, 3);                         // Invoke the render of the mouth rectangle
+  gl.drawArrays(gl.LINE_LOOP, 0, 3);                         // Invoke the render of the ferris wheel frame
 }
 
 function DrawCars(degs, pivot)

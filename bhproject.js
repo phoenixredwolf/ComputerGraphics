@@ -47,16 +47,16 @@ window.onload = function init()
   //
   //  Configure WebGL
   //
-  gl.viewport(0, 0, canvas.width, canvas.height);  // What part of html are we looking at?
-  gl.clearColor( 0.0, 0.0, 0.0, 1.0 );               // Set background color of the viewport to black
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.clearColor( 0.0, 0.0, 0.0, 1.0 );  // Set background color of the viewport to black
 
   //  Load shaders and initialize attribute buffers
   program = initShaders( gl, "vertex-shader", "fragment-shader" ); // Compile and link shaders to form a program
-  gl.useProgram(program);                                              // Make this the active shaer program
+  gl.useProgram(program);                                          // Make this the active shaer program
 
   aspect = canvas.width / canvas.height;        // get the aspect ratio of the canvas
-  left  *= aspect;                                  // left limit of world coords
-  right *= aspect;                                  // right limit of world coords
+  left  *= aspect;                              // left limit of world coords
+  right *= aspect;                              // right limit of world coords
 
   // Done setting View Transformation matrix
 
@@ -78,12 +78,15 @@ document.getElementById("Blue").onchange = function () { blue = event.srcElement
 document.getElementById("pan_left").onmousedown = function () {
   interval_ = setInterval(function () {left += -0.2; right += -0.2 }, 50)};
 document.getElementById("pan_left").onmouseup = function (){ clearInterval(interval_) };
+
 document.getElementById("pan_right").onmousedown = function () {
   interval_ = setInterval(function () { left += 0.2; right += 0.2 }, 50)};
 document.getElementById("pan_right").onmouseup = function (){ clearInterval(interval_) };
+
 document.getElementById("pan_down").onmousedown = function () {
   interval_ = setInterval(function () { bottom += -0.2; topBorder += -0.2 }, 50)};
 document.getElementById("pan_down").onmouseup = function (){ clearInterval(interval_) };
+
 document.getElementById("pan_up").onmousedown = function () {
   interval_ = setInterval(function () { bottom += 0.2; topBorder += 0.2 }, 50)};
 document.getElementById("pan_up").onmouseup = function (){ clearInterval(interval_)};
@@ -171,8 +174,8 @@ function DrawSquare(degs, pivot)
 
   gl.uniform4f(colorLoc, 1.0, 1.0, 0.0, 1.0);   // Set RGB of frangment shader uniform variable "color" to yellow
 
-  scaleMat = scale(5.0, 5.0, 0.0);                          // Scale unit square in x-direction by 5.0 to form a 5x1 rectangle
-  translateMat = translate(0.0, 0.0, 0.0);                  // Translate the 5x1 rectangle down -2.0 in the y direction
+  scaleMat = scale(5.0, 5.0, 0.0);                          // Scale unit to form a 5x5 rectangle
+  translateMat = translate(0.0, 0.0, 0.0);                  // Set location on canvas
   modelView = mult(translateMat, scaleMat);                 // Compose the scale and the translate via matrix multiply storing the result in the modelView matrix
   modelView = mult(R, modelView);
 
@@ -233,8 +236,7 @@ function render() {
   var P_loc = gl.getUniformLocation(program, "P");           // Get Vertex shader memory location for P
   gl.uniformMatrix4fv(P_loc, false, flatten(PMat));          // Set uniform variable P on GPU
 
-  //degs = degs + 1;
-
+  // Determine if Rotation control has been activated/deactived and draw accrodingly
   switch (rot) {
     case true:
       DrawSquare(degs +=1, posit);
@@ -242,8 +244,6 @@ function render() {
     case false:
       DrawSquare(degs, posit);
       break;
-
-
   }
 
   requestAnimationFrame(render);                             // swap buffers, continue render loop
